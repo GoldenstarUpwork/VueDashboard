@@ -31,7 +31,7 @@
         <div class="width-1of2 sm-width-1of1">
           <card-graph-bar
             card-title="Total Graph"
-            :data.lazy="dataForGraph"
+            :data.once="dataForGraph"
           ></card-graph-bar>
         </div>
         <div class="auto">
@@ -45,22 +45,14 @@
   </div>
 </template>
 <script type="text/javascript">
-  import cardGraphBar from './cardBarLineChart.vue'
+  import cardGraphBar from './cardGraph.vue'
   import cardTotal from './cardTotal.vue'
   export default {
     name: 'Home',
     mounted () {
-      // Axios.all not working
-      Promise.all([
-        this.$http.get('posts'),
-        this.$http.get('comments'),
-        this.$http.get('todos')
-      ])
-        .then(response => {
-          this.totalPosts = response[0].data.length
-          this.totalComments = response[1].data.length
-          this.totalTodos = response[2].data.length
-        })
+      this.simpleGetCounter('posts', 'totalPosts')
+      this.simpleGetCounter('comments', 'totalComments')
+      this.simpleGetCounter('todos', 'totalTodos')
     },
     data () {
       return {
@@ -81,7 +73,16 @@
     components: {
       cardTotal,
       cardGraphBar
+    },
+    methods: {
+      simpleGetCounter (url, property) {
+        this.$http
+          .get(url)
+          .then(response => { this[property] = response.data.length })
+      }
     }
   }
 </script>
-<style></style>
+<style>
+
+</style>
