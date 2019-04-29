@@ -97,7 +97,6 @@
 </script>
 <style scoped>
   .horizontal-icon{
-
     transform: rotate(90deg);
   }
 </style>
