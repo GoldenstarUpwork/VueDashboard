@@ -31,18 +31,10 @@
         <div class="width-1of2 sm-width-1of1">
           <card-chart
             card-title="Total Graph"
-            :data="dataForGraph"
+            :data.lazy="dataForGraph"
           ></card-chart>
         </div>
         <div class="auto">
-          </card-todo>
-        </div>
-      </div>
-      <div class="flex wrap gutter">
-        <div class="width-4of5 sm-width-1of1">
-          <card-todo
-            card-title="Generic todos"
-            api="todos">
         </div>
       </div>
       <div class="flex wrap gutter">
@@ -55,7 +47,6 @@
 <script type="text/javascript">
   import cardChart from './cardChart.vue'
   import cardTotal from './cardTotal.vue'
-  import cardTodo from './cardTodo.vue'
   export default {
     name: 'Home',
     mounted () {
@@ -89,8 +80,7 @@
     },
     components: {
       cardTotal,
-      cardChart,
-      cardTodo
+      cardChart
     }
   }
 </script>
