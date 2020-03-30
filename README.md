@@ -1,3 +1,3 @@
 # Vuejs Admin Examples
 
-> Some examples how powerful Vuejs / Vuejs is for SPA projects.
+> Some dashboards how powerful Vuejs / Vuex is for SPA projects.
